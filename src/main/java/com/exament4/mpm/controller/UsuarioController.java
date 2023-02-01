@@ -78,22 +78,21 @@ public class UsuarioController {
         }
 
         modelAndView.addObject("usuario", usuario);
-        modelAndView.addObject("permiso", permisos);
+        modelAndView.addObject("permisos", permisos);
         modelAndView.setViewName("usuarios/editar");
 
         return modelAndView;
-
     }
 
     @PostMapping(path = { "/modificar" })
-    public ModelAndView update(Usuario usuario, @RequestParam(value = "ck_permiso") int[] ck_permiso) {
+    public ModelAndView update(Usuario usuario, @RequestParam(value = "ck_permisos") int[] ck_permisos) {
 
         List<Permiso> permiso = usuario.getPermisos();
         if (permiso == null) {
             permiso = new ArrayList<Permiso>();
         }
 
-        for (int i : ck_permiso) {
+        for (int i : ck_permisos) {
             Permiso a = new Permiso(i);
             permiso.add(a);
         }
