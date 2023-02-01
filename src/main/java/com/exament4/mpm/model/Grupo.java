@@ -1,12 +1,11 @@
 package com.exament4.mpm.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 @Entity
 public class Grupo {
@@ -16,14 +15,13 @@ public class Grupo {
 
     private String nombre;
 
-    /*
-     * @Transient
-     * private List<DetalleUsuario> detalleUsuarios;
-     */
+    @Transient
+    private List<Usuario> usuarios;
 
-    public Grupo(int codigo, String nombre) {
+    public Grupo(int codigo, String nombre, List<Usuario> usuarios) {
         this.codigo = codigo;
         this.nombre = nombre;
+        this.usuarios = usuarios;
     }
 
     public Grupo(int codigo) {
@@ -47,6 +45,14 @@ public class Grupo {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
     }
 
 }

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es" xmlsn:th="http://www.thymeleaf.org">
+
+<head th:replace="commons/header :: header" />
+
+<body>
+  <div th:replace="commons/menu :: menu" />
+
+  <!-- boton nuevo grupo -->
+  <a th:href="@{/grupos/nuevo}" class="btn btn-primary" >nuevo grupo</a>
+
+  <!-- lista grupos -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col" >codigo</th>
+        <th scope="col" >Nombre</th>
+        <th scope="col" >usuarios</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="grupo : ${grupos}">
+        <th scope="row" th:text="${grupo.codigo}"></th>
+        <td th:text="${grupo.nombre}">Nombre</td>
+        <td>
+          <select name="usuarios" id="usuarios" th:each="usuario : ${grupo.usuarios}">
+            <option th:text="${usuario.nombre}"></option>
+          </select>
+        </td>
+        <td>
+          <a th:href="@{/grupos/editar/}+${grupo.codigo}" class="btn btn-primary">editar</a>
+          <a th:href="@{/grupos/borrar/}+${grupo.codigo}" class="btn btn-danger">borrar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div th:replace="commons/footer :: footer" class="container" />
+
+</body>
+
+</html>
