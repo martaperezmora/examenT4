@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es" xmlsn:th="http://www.thymeleaf.org">
+
+<head th:replace="commons/header :: header" />
+
+<body>
+  <div th:replace="commons/menu :: menu" />
+
+  <!-- boton nuevo permiso -->
+  <a th:href="@{/permisos/nuevo}" class="btn btn-primary" >nuevo permiso</a>
+
+  <!-- lista permisos -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col" >codigo</th>
+        <th scope="col" >Nombre</th>
+        <th scope="col" >descripcion</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="permiso : ${permisos}">
+        <th scope="row" th:text="${permiso.codigo}"></th>
+        <td th:text="${permiso.nombre}">Nombre</td>
+        <td th:text="${permiso.nombre}">descripción</td>
+        <td>
+          <a th:href="@{/permisos/editar/}+${permiso.codigo}" class="btn btn-primary">editar</a>
+          <a th:href="@{/permisos/borrar/}+${permiso.codigo}" class="btn btn-danger">borrar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="row">
+    <div th:replace="commons/pagination :: pagination">
+  </div>
+
+  <div th:replace="commons/footer :: footer" class="container" />
+
+</body>
+
+</html>
