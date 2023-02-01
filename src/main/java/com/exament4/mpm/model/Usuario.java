@@ -76,4 +76,12 @@ public class Usuario {
         this.permisos = permisos;
     }
 
+    public Grupo getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(Grupo grupo) {
+        this.grupo = grupo;
+    }
+
 }

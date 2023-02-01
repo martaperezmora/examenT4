@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es" xmlsn:th="http://www.thymeleaf.org">
+
+<head th:replace="commons/header :: header" />
+
+<body>
+  <div th:replace="commons/menu :: menu" />
+
+  <!-- boton nuevo usuario -->
+  <a th:href="@{/usuarios/nuevo}" class="btn btn-primary">nuevo usuario</a>
+
+  <!-- lista usuarios -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">codigo</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">email</th>
+        <th scope="col">grupo</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="usuario : ${usuarios}">
+        <th scope="row" th:text="${usuario.codigo}"></th>
+        <td th:text="${usuario.nombre}">Nombre</td>
+        <td th:text="${usuario.email}">email</td>
+        <td th:text="${usuario.grupo.nombre}">grupo</td>
+        <td>
+          <a th:href="@{/usuarios/editar/}+${usuario.codigo}" class="btn btn-primary">editar</a>
+          <a th:href="@{/usuarios/borrar/}+${usuario.codigo}" class="btn btn-danger">borrar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div th:replace="commons/footer :: footer" class="container" />
+
+</body>
+
+</html>
