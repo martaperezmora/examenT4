@@ -20,7 +20,7 @@ public class Permiso {
     @Transient
     private boolean checked;
 
-    @ManyToMany(mappedBy = "empleados")
+    @ManyToMany(mappedBy = "permisos")
     private List<Usuario> usuarios;
 
     public Permiso(int codigo, String nombre, String descripcion, boolean checked, List<Usuario> usuarios) {

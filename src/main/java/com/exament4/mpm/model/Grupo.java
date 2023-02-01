@@ -16,7 +16,7 @@ public class Grupo {
 
     private String nombre;
 
-        /*
+    /*
      * @Transient
      * private List<DetalleUsuario> detalleUsuarios;
      */
